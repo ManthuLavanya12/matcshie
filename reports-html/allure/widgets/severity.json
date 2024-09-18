@@ -1,0 +1,1 @@
+[{"uid":"4a83c17a5245b4a2","name":"ShouldGetSingleIncident","time":{"start":1726589594586,"stop":1726589597166,"duration":2580},"status":"passed","severity":"normal"},{"uid":"9751b04ce997324a","name":"usershouldAbleToCreateIncident","time":{"start":1726589589584,"stop":1726589594557,"duration":4973},"status":"passed","severity":"normal"}]

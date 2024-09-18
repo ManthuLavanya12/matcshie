@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","4973","usershouldAbleToCreateIncident","Default suite","Tue Sep 17 21:43:09 IST 2024","passed","Tue Sep 17 21:43:14 IST 2024","com.matschie.servicenow.tests.IncidentServiceTest","Default test","com.matschie.servicenow.tests.IncidentServiceTest","usershouldAbleToCreateIncident"
+"","2580","ShouldGetSingleIncident","Default suite","Tue Sep 17 21:43:14 IST 2024","passed","Tue Sep 17 21:43:17 IST 2024","com.matschie.servicenow.tests.IncidentServiceTest","Default test","com.matschie.servicenow.tests.IncidentServiceTest","ShouldGetSingleIncident"
