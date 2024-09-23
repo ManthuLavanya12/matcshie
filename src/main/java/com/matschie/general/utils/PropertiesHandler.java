@@ -28,7 +28,25 @@ try {
 
 
 		}
+		public static String configjira(String key )
+
+		{
+				 prop=new Properties();
+					String value=null;
+try {
+		prop.load(new FileInputStream(new File("src/test/resources/resources/JIRAconfig.properties")));
 		
+			value=prop.getProperty(key);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return value;
+
+
+
+		}
+
 		public static Map<String,String> queryparams()
 
 		{

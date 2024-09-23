@@ -14,8 +14,10 @@ import com.matschie.general.utils.PropertiesHandler;
 import com.matschie.pojo.deserialization.ResultModal;
 import com.matschie.pojo.serialization.CreateIncident;
 import com.matschie.servicenow.services.IncidentServices;
+import com.servicenow.testng.hooks.Retry;
 import com.servicenow.testng.hooks.TestNGHooks;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class IncidentServiceTest extends TestNGHooks {
@@ -86,5 +88,19 @@ public void ShouldGetIncidentByQueryparam() {
 	System.out.println(service.getresponse());
 }
 
-
+@Test
+public void GetHardwarelist() {
+	Map<String,String> result= new HashMap<String,String>();
+	String[] keys= {"sysparm_query"};
+	result=PropertiesHandler.queryparamsmap(keys);
+	new IncidentServices()
+       .getincidentByquery(result)
+       .validateStatusCode(200)
+       .validateStatusLine("OK")
+       .validatecontentType("application/json")
+       .validateIncidentcategoryisHardware("result.findAll{it.category == 'hardware'}.category", "hardware")
+       .validatecategorycount("result.findAll{it.category == 'hardware'}.category", 9);
+	   
+	
+}
 }

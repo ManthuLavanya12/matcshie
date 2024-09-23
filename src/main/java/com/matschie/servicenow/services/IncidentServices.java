@@ -1,6 +1,7 @@
 package com.matschie.servicenow.services;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import com.matschie.pojo.deserialization.ResultModal;
@@ -63,6 +64,20 @@ public Response GetIncidentByquery(Map<String,String> map) {
     .get("/incident");
 
 }
+public Response GetActiveChangeRequests(Map<String,String> map) {
+	return given()
+	 .queryParams(map)
+	 .log()
+	 .all()
+    .when()
+    .get();
+
+}
+
+public IncidentServices getchangeRequestByQuery(Map<String,String> map) {
+	response=GetActiveChangeRequests(map);
+	return this;
+}
 
 public IncidentServices getincidentByquery(Map<String,String> map) {
 	response=GetIncidentByquery(map);
@@ -72,7 +87,6 @@ public String getresponse() {
 	   return response.body().asPrettyString();
 	
 }
-
 
 
 public IncidentServices getincident(String sys_id) {
@@ -145,14 +159,39 @@ public IncidentServices validatecontentType(String content) {
     return this ;
 	
 }
+public IncidentServices validateIncidentcategoryisHardware(String jsonpath, String category) {
+	List<String> list=response.body().jsonPath().getList(jsonpath);
+	for(String string : list) {
+		assertThat(string, equalTo(category));
+	}
+	return this;
+}
+public IncidentServices validatecategorycount(String jsonpath, int count) {
+	List<String> list=response.body().jsonPath().getList(jsonpath);
+
+		assertThat(list.size(), equalTo(count));
+	
+	return this;
+}
 public  String GetSysId(String sysid) {
    return response.body().jsonPath().getString(sysid);
 	
 }
 
 
+public IncidentServices validateactiveChangeRequest(String active, String jsonpath, int count) 
+{   	
+	List<String> list=response.body().jsonPath().getList(jsonpath);
+	for(String string : list) {
+	
+		assertThat(string, equalTo(active));
+	}
+	assertThat(list.size(), equalTo(count));
 
-
-
+		return this;
 
 }
+}
+
+
+

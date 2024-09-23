@@ -1,7 +1,10 @@
 package com.servicenow.testng.hooks;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 
+import com.matschie.data.utils.DataEngine;
+import com.matschie.data.utils.DataFactory;
 
 import static com.matschie.general.utils.PropertiesHandler.*;
 
@@ -19,6 +22,13 @@ public void setUp() {
  
 
 }
-
+@DataProvider(name="excel")
+public String[][] getdataexcel(){
+	return DataFactory.engine(DataEngine.EXCEL).getData("create-incident");
+}
+@DataProvider(name="csv")
+public String[][] getdatacsv(){
+	return DataFactory.engine(DataEngine.CSV).getData("incident CSV");
+}
 
 }

@@ -1,4 +1,5 @@
-
-
 src/test/resources/resources/config.properties
+src/test/resources/resources/JIRAconfig.properties
+allure-results
+src/test/java/allure-results
 

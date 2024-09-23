@@ -1,0 +1,11 @@
+{
+    "fields": {
+        "summary": "Updated Issue from REST API",
+        "issuetype": {
+            "id": "10002"
+        },
+        "project": {
+            "id": "10000"
+        }
+    }
+}
